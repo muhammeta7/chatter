@@ -1,12 +1,12 @@
-# :speech_balloon: Chatter
+# :speech_balloon: Chatter App
 
-# :page_with_curl: Description
+## :page_with_curl: Description
 
 This portion represents the front-end portion of the tcpZCWFinalProject. The front end was completed<br />
 using `Angular` and served on Heroku using Node and express servers. The application allows<br /> users to sign up,
 <br /> create channels, and directly message other users that are also in the system.
 
-# :satellite: Technologies Used
+## :satellite: Technologies Used
 
 1.  Angular
 2.  HTML, SCSS
@@ -15,7 +15,7 @@ using `Angular` and served on Heroku using Node and express servers. The applica
 5.  Java
 6.  Postgres SQL
 
-# Screenshots
+## Screenshots
 
 ### Login Page
 
