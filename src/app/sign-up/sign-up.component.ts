@@ -1,9 +1,9 @@
 import {Component, OnInit, TemplateRef} from '@angular/core';
-import {Message} from "../messages/model/message";
-import {Channel} from "../channels/model/channel";
-import {UserService} from "../shared/user.service";
-import {Router} from "@angular/router";
-import {BsModalRef, BsModalService} from 'ngx-bootstrap/modal'
+import {Message} from '../messages/model/message';
+import {Channel} from '../channels/model/channel';
+import {UserService} from '../shared/user.service';
+import {Router} from '@angular/router';
+import {BsModalRef, BsModalService} from 'ngx-bootstrap/modal';
 
 @Component({
   selector: 'app-sign-up',
@@ -28,7 +28,7 @@ export class SignUpComponent implements OnInit {
     channels: []
   };
 
-  constructor(private userService: UserService, private router:Router, private modalService: BsModalService) {
+  constructor(private userService: UserService, private router: Router, private modalService: BsModalService) {
   }
 
   ngOnInit(): void {
@@ -37,10 +37,10 @@ export class SignUpComponent implements OnInit {
   createUser(): void {
     this.userService.createUser(this.userModel).subscribe(
       res => {
-        this.router.navigate(['/login'])
+        this.router.navigate(['/login']);
       },
       err => {
-        alert("An error has occurred while creating user!");
+        alert('An error has occurred while creating user!');
       }
     );
   }

@@ -9,7 +9,7 @@ import {Channel} from "../channels/model/channel";
 })
 export class UserService {
 
-  private BASE_URL = "http://localhost:8080";
+  private BASE_URL = 'http://localhost:8080';
   private BASE_USERS_URL = `${this.BASE_URL}/users`;
   private CREATE_USER = `${this.BASE_URL}/register`;
   private GET_BY_USERNAME = `${this.BASE_USERS_URL}/username/`;

@@ -1,0 +1,21 @@
+.navbar{
+  background: url("https://i.imgur.com/LDiWP91.png");
+}
+.navbar-brand{
+  color: white;
+}
+
+.navbar-collapse .navbar-nav > li > a {
+  color: white;
+}
+.title{
+  padding-left: 15px;
+}
+.navbar-collapse .navbar-nav > li > a:hover,
+.navbar-collapse .navbar-nav > li > a:focus {
+  color: #5be0f3;
+}
+
+.navbar-toggler-icon {
+  background: #5be0f3;
+}
