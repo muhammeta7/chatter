@@ -1,14 +1,13 @@
-import {Injectable} from '@angular/core';
-import {Observable, Subject} from "rxjs";
-import {Channel} from "../channels/model/channel";
-import {HttpClient} from "@angular/common/http";
-
+import { Injectable } from '@angular/core';
+import { Observable, Subject } from 'rxjs';
+import { Channel } from '../channels/model/channel';
+import { HttpClient } from '@angular/common/http';
 
 @Injectable({
-  providedIn: 'root'
+  providedIn: 'root',
 })
 export class ChannelService {
-  private BASE_URL = "http://localhost:8080";
+  private BASE_URL = 'https://tcp-chat-zcw.herokuapp.com';
   private BASE_MESSAGES_URL = `${this.BASE_URL}/messages`;
   // CHANNEL ENDPOINTS
   private BASE_CHANNELS_URL = `${this.BASE_URL}/channels/`;
@@ -17,8 +16,7 @@ export class ChannelService {
   private CREATE_CHANNEL_URL = `${this.BASE_CHANNELS_URL}create/user/`;
   private DELETE_CHANNEL_URL = `${this.BASE_CHANNELS_URL}`;
 
-  constructor(private http: HttpClient) {
-  }
+  constructor(private http: HttpClient) {}
 
   // Channel CRUD operations
   getAllChannels(): Observable<Channel[]> {
@@ -26,27 +24,32 @@ export class ChannelService {
   }
 
   getChannelById(id: number): Observable<Channel> {
-    return this.http.get<Channel>(this.GET_CHANNEL_BYID + '/' + id)
+    return this.http.get<Channel>(this.GET_CHANNEL_BYID + '/' + id);
   }
 
-  createChannel(id:number, channel:Channel){
+  createChannel(id: number, channel: Channel) {
     return this.http.post<Channel>(this.CREATE_CHANNEL_URL + id, channel);
   }
 
-  createDmChannel(userName:string, otherUser:string, channel:Channel){
-    return this.http.post<Channel>(this.BASE_CHANNELS_URL + userName + '/dm/' + otherUser, channel);
+  createDmChannel(userName: string, otherUser: string, channel: Channel) {
+    return this.http.post<Channel>(
+      this.BASE_CHANNELS_URL + userName + '/dm/' + otherUser,
+      channel
+    );
   }
 
-  getAllPublicChannels(): Observable<Channel[]>{
+  getAllPublicChannels(): Observable<Channel[]> {
     return this.http.get<Channel[]>(this.PUBLIC_CHANNELS);
   }
 
-  updatePrivacy(channel:Channel): Observable<Channel>{
-    return this.http.put<Channel>(this.BASE_CHANNELS_URL + channel.id + '/changePrivacy', channel);
+  updatePrivacy(channel: Channel): Observable<Channel> {
+    return this.http.put<Channel>(
+      this.BASE_CHANNELS_URL + channel.id + '/changePrivacy',
+      channel
+    );
   }
 
   deleteChannel(id: number): Observable<any> {
     return this.http.delete(this.DELETE_CHANNEL_URL + id);
   }
-
 }

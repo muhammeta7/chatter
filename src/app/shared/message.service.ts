@@ -1,14 +1,13 @@
-import {Injectable} from '@angular/core';
-import {HttpClient} from "@angular/common/http";
-import {Message} from "../messages/model/message";
-import {Observable} from "rxjs";
+import { Injectable } from '@angular/core';
+import { HttpClient } from '@angular/common/http';
+import { Message } from '../messages/model/message';
+import { Observable } from 'rxjs';
 
 @Injectable({
-  providedIn: 'root'
+  providedIn: 'root',
 })
 export class MessageService {
-
-  private BASE_URL = "http://localhost:8080";
+  private BASE_URL = 'https://tcp-chat-zcw.herokuapp.com';
   // Message Endpoints
   private BASE_MESSAGES_URL = `${this.BASE_URL}/messages`;
   private GET_MESSAGE_URL = `${this.BASE_URL}/messages`;
@@ -16,10 +15,7 @@ export class MessageService {
   private ACTUAL_CREATE_MESSAGE = `${this.BASE_MESSAGES_URL}/channel/`;
   private DELETE_MESSAGE_URL = `${this.BASE_MESSAGES_URL}/delete/`;
 
-
-  constructor(private http: HttpClient) {
-
-  }
+  constructor(private http: HttpClient) {}
 
   getMessage(id: number): Observable<any> {
     return this.http.get<Message>(this.GET_MESSAGE_URL + '/' + id);
@@ -29,24 +25,25 @@ export class MessageService {
     return this.http.get<Message[]>(this.BASE_MESSAGES_URL);
   }
 
-
-  createMessage(channelId: number, userId: number, message: Message){
-    return this.http.post<Message>(this.ACTUAL_CREATE_MESSAGE + channelId + '/sender/' + userId, message);
+  createMessage(channelId: number, userId: number, message: Message) {
+    return this.http.post<Message>(
+      this.ACTUAL_CREATE_MESSAGE + channelId + '/sender/' + userId,
+      message
+    );
   }
 
   getChannelMessages(id: number): Observable<Message[]> {
     return this.http.get<Message[]>(this.GET_CHANNEL_MESSAGES + id);
   }
 
-  updateMessage(id: number, newContent:string){
+  updateMessage(id: number, newContent: string) {
     const url = `${this.BASE_MESSAGES_URL}/${id}/edit`;
     const param = new FormData();
     param.append('newContent', newContent);
     return this.http.put<Message>(url, param);
   }
 
-  deleteMessage(id:number): Observable<any>{
+  deleteMessage(id: number): Observable<any> {
     return this.http.delete(this.DELETE_MESSAGE_URL + id);
   }
-
 }
