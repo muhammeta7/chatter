@@ -1,21 +1,23 @@
-import {Component, OnInit, TemplateRef} from '@angular/core';
-import {Message} from '../messages/model/message';
-import {Channel} from '../channels/model/channel';
-import {UserService} from '../shared/user.service';
-import {Router} from '@angular/router';
-import {BsModalRef, BsModalService} from 'ngx-bootstrap/modal';
+import { Component, OnInit, TemplateRef } from '@angular/core';
+import { Message } from '../messages/model/message';
+import { Channel } from '../channels/model/channel';
+import { UserService } from '../shared/user.service';
+import { Router } from '@angular/router';
+import { BsModalRef, BsModalService } from 'ngx-bootstrap/modal';
 
 @Component({
   selector: 'app-sign-up',
   templateUrl: './sign-up.component.html',
-  styleUrls: ['./sign-up.component.scss']
+  styleUrls: ['./sign-up.component.scss'],
 })
 export class SignUpComponent implements OnInit {
   modalRef: BsModalRef;
   config = {
     class: 'modal-dialog-centered modal-small',
-    animated: true
+    animated: true,
   };
+
+  invalidSignUp = false;
 
   userModel: UserViewModel = {
     id: null,
@@ -25,30 +27,35 @@ export class SignUpComponent implements OnInit {
     userName: '',
     password: '',
     messages: [],
-    channels: []
+    channels: [],
   };
 
-  constructor(private userService: UserService, private router: Router, private modalService: BsModalService) {
-  }
+  constructor(
+    private userService: UserService,
+    private router: Router,
+    private modalService: BsModalService
+  ) {}
 
-  ngOnInit(): void {
-  }
+  ngOnInit(): void {}
 
   createUser(): void {
     this.userService.createUser(this.userModel).subscribe(
-      res => {
+      (res) => {
         this.router.navigate(['/login']);
       },
-      err => {
+      (err) => {
         alert('An error has occurred while creating user!');
       }
     );
   }
 
   openModal(template: TemplateRef<any>) {
-    this.modalRef = this.modalService.show(template, this.config);
+    if (this.invalidSignUp) {
+      this.createUser();
+    } else {
+      this.modalRef = this.modalService.show(template, this.config);
+    }
   }
-
 }
 
 export interface UserViewModel {
