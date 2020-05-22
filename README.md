@@ -1,27 +1,40 @@
-# Chatter
+# :speech_balloon: Chatter
 
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 9.1.3.
+# :page*with* Description
 
-## Development server
+This portion represents the front-end portion of the tcpZCWFinalProject. The front end was completed<br />
+using `Angular` and served on Heroku using Node and express servers. The application allows<br /> users to sign up,
+<br /> create channels, and directly message other users that are also in the system.
 
-Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The app will automatically reload if you change any of the source files.
+# :satellite: Technologies Used
 
-## Code scaffolding
+1.  Angular
+2.  HTML, SCSS
+3.  TypeScript
+4.  Spring-Boot
+5.  Java
+6.  Postgres SQL
 
-Run `ng generate component component-name` to generate a new component. You can also use `ng generate directive|pipe|service|class|guard|interface|enum|module`.
+# Screenshots
 
-## Build
+### Login Page
 
-Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory. Use the `--prod` flag for a production build.
+![Login Page](/screenshots/login.PNG)
 
-## Running unit tests
+### Sign-Up Page
 
-Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.io).
+![Sign-up Page](/screenshots/sign-up.PNG)
 
-## Running end-to-end tests
+### User Dashboard
 
-Run `ng e2e` to execute the end-to-end tests via [Protractor](http://www.protractortest.org/).
+![Dashboard Page](/screenshots/dashboard.PNG)
 
-## Further help
+### Channel Page
 
-To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI README](https://github.com/angular/angular-cli/blob/master/README.md).
+![Channel Page](/screenshots/channels.PNG)
+
+### Authors
+
+**Muhammet Aydin** [Muhammet Aydin](https://github.com/muhammeta7)
+**Chris Farmer** [Chris Farmer](https://github.com/farmerc92)
+**Sandy Setiawan** [Sandy Setiawan](https://github.com/sseti)
