@@ -1,0 +1,200 @@
+.card{
+  background: url("https://i.imgur.com/LDiWP91.png");
+  color: white;
+}
+
+.panel{
+  margin-top: 25px;
+}
+
+.userChannels{
+  margin-top: 20px;
+}
+// Create Channel Animations
+
+
+
+// Users
+#connection{
+  padding-right: 4%;
+  padding-left: 4%;
+}
+
+#users{
+  padding: 2%;
+}
+
+.online{
+  color:green;
+}
+
+.offline{
+  color: red;
+}
+// Button Backgrounds
+#addChannel{
+  background: url("https://i.imgur.com/cK1tC6c.png");
+  box-shadow: dimgray;
+}
+
+.input-group-text{
+  background: url("https://i.imgur.com/cK1tC6c.png");
+}
+
+.channelBut{
+  color: #77796d;
+}
+
+// Icons and Buttons
+.fa-plus:hover {
+  content: "\f067";
+  font-size: 1.1rem;
+  color: #00b000;
+}
+
+.fa-trash-o:hover{
+  font-size: 1.1rem;
+  color: red;
+}
+
+.fa-eye:hover{
+  font-size: 1.1rem;
+  color: deepskyblue;
+}
+
+.fa-lock:hover{
+  font-size: 1.1rem;
+  color: deepskyblue;
+}
+
+.fa-edit:hover{
+  font-size: 1.1rem;
+  color: #00b000;
+}
+//
+#dmChannels{
+  margin-bottom: 0;
+}
+
+.list-group-item{
+  cursor: pointer;
+  padding: 0;
+}
+
+.input-label{
+  background: rgba(0,0,0,0);
+  border: none;
+  cursor: none;
+  color: black;
+  padding-left: 4%;
+  font-size: 1rem;
+}
+
+// Message Details
+.list-group-flush li{
+  background: url("https://i.imgur.com/9hXkgVS.png");
+}
+
+.list-group-flush li:nth-child(odd){
+  background: url("https://i.imgur.com/cK1tC6c.png");
+}
+
+.sender{
+  padding-left: 3%;
+  padding-top: 1%;
+  font-weight: bold;
+  font-size: .7rem;
+}
+
+.fa-edit{
+  font-size: .7rem;
+  padding-right: 3%;
+}
+
+.messages{
+  margin-top: -3%;
+  padding-left: 3%;
+  font-size: .65rem;
+}
+
+.stamp{
+  font-size: 0.5rem;
+  padding-right: 9%;
+  color: dimgray;
+}
+
+.editMessage{
+  padding-right: 6%;
+}
+
+.edit-message-container{
+  width: 100%;
+  padding: 0 1rem;
+}
+
+.edit-message-input {
+  font-size: .8rem;
+  width: 100%;
+  padding-left: .2rem;
+}
+
+
+// Message Input styling
+.input{
+  margin: 0 auto;
+  font-size: 1em;
+
+  textarea{
+    height: 80px;
+    margin-top: 6%;
+    font-size: 1em;
+    background-color: transparent;
+    border: 1.5px solid #0099ef;
+    outline: none;
+    color: black;
+    padding-left: 10px;
+
+    &:focus + label{
+      top: -110px;
+      font-size: 1em;
+      transition: all .3s;
+      color: rgba(85, 85, 85, 0.8);
+      padding-left: 2px;
+    }
+
+  }
+
+  label{
+    display: block;
+    position: relative;
+    left: 10px;
+    top: -70px;
+    font-size: 1em;
+    cursor: text;
+    color: #0099ef;
+    transition: all .3s;
+  }
+}
+
+#menu li{
+  width: 200px;
+  height: 50px;
+  background-color: gray;
+  color: lightgrey;
+  list-style-type: none;
+  margin: 5px;
+  text-align: center;
+  transition-property:margin-left;
+  transition-duration:1s;
+  transition-timing-function:linear;
+
+  /* Safari */
+  -webkit-transition-property:margin-left;
+  -webkit-transition-duration:1s;
+  -webkit-transition-timing-function:linear;
+
+}
+
+#menu li:hover{
+  margin-left: 25px;
+}

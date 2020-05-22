@@ -1,1 +1,201 @@
-<p>channels works!</p>
+<div class="container">
+  <div class="row">
+
+
+    <!----------------------------    Users Column  -------------------------- -->
+    <div class="col-sm-2">
+      <div class="row panel">
+        <div class="col-sm-12">
+          <div class="card">
+            <h6 class="card-header text-center">Users</h6>
+          </div>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-sm-12 container">
+          <ul *ngFor="let user of channelUsers" class="list-group list-group-flush">
+            <li  *ngIf="user.id != this.currentUser.id" id="users" class="list-group-item">
+              <span><i class="fa fa-circle-o" id="connection"></i>{{user.userName}}</span>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </div>
+
+    <!----------------------------    Channels Column  -------------------------- -->
+    <div class="col-sm-4">
+      <!--   Channel Panel  -->
+      <div class="row panel">
+        <div class="col-sm-12">
+          <div class="card">
+            <h6 class="card-header text-center">Create A Channel</h6>
+          </div>
+        </div>
+      </div>
+      <!--  Create Channel Row  -->
+      <div class="row createChannel">
+        <div class="col-sm-12 input-group create">
+          <input type="text"
+                 class="form-control"
+                 id="channelName"
+                 name="channelName"
+                 placeholder="Channel Name"
+                 aria-label="Search"
+                 aria-describedby="basic-addon1"
+                 [(ngModel)]="channelModel.channelName">
+          <div class="input-group-append">
+            <span class="input-group-text"><i (click)="createChannel()" class="fa fa-plus text-center" id="addChannel"></i></span>
+          </div>
+        </div>
+      </div>
+
+      <!--   User Channels  -->
+      <div class="row userChannels">
+        <div class="col-sm-12">
+          <div class="card">
+            <h6 class="card-header text-center">{{currentUser?.firstName}}'s Channels</h6>
+          </div>
+        </div>
+      </div>
+
+      <div class="row">
+        <div  class="input-group create col-sm-12">
+          <a *ngFor="let channel of channels" class="list-group-item list-group-item-action">
+            <input [(ngModel)]="channel.channelName" (change)="updateChannel(channel)" type="text" class="input-label">
+            <div class="input-group-append pull-right">
+              <span class="input-group-text"><i class="fa fa-lock" (click)="updateChannelPrivacy(channel)"></i></span>
+              <span class="input-group-text"><i class="fa fa-eye" id="view" (click)="getChannelMessages(channel)"></i></span>
+              <!--                            channelMessages=null;-->
+              <span class="input-group-text"><i class="fa fa-trash-o" id="trash" (click)="deleteChannel(channel)"></i></span>
+            </div>
+          </a>
+        </div>
+      </div>
+
+      <!--   Direct Messages Panel  -->
+      <div class="row userChannels">
+        <div class="col-sm-12">
+          <div class="card">
+            <h6 class="card-header text-center">Direct Messages</h6>
+          </div>
+        </div>
+      </div>
+
+      <div class="row dmChannel">
+        <div class="col-sm-12 input-group create">
+          <input type="text"
+                 class="form-control"
+                 id="directMessage"
+                 name="channelName"
+                 placeholder="Type Username to Create DM"
+                 aria-label="Search"
+                 aria-describedby="basic-addon1"
+                 [(ngModel)]="dmChannelModel.channelName">
+          <div class="input-group-append">
+            <span class="input-group-text"><i (click)="createDmChannel(this.dmChannelModel.channelName)" class="fa fa-plus text-center" id="username"></i></span>
+          </div>
+        </div>
+      </div>
+
+      <div class="row">
+        <div  class="col-sm-12 input-group">
+          <ul *ngFor="let dmChannel of dmChannels" class="list-group-item list-group-item-action" id="dmChannels" disabled="disabled">
+            <input [(ngModel)]="dmChannel.channelName" type="text" class="input-label" readonly>
+            <div class="input-group-append pull-right">
+              <!--                            channelMessages=null;-->
+              <span class="input-group-text"><i class="fa fa-eye"  id="view1" (click)="getChannelMessages(dmChannel);getCurrentDmChannel(dmChannel)"></i></span>
+              <span class="input-group-text"><i class="fa fa-trash-o" id="trash1" (click)="deleteChannel(dmChannel)"></i></span>
+            </div>
+          </ul>
+        </div>
+      </div>
+
+      <!--   Public Channels  -->
+      <div class="row userChannels">
+        <div class="col-sm-12">
+          <div class="card">
+            <h6 class="card-header text-center">Public Channels</h6>
+          </div>
+        </div>
+      </div>
+
+      <div class="row">
+        <div *ngFor="let channel of publicChannels"  class="input-group create col-sm-12">
+          <a class="list-group-item list-group-item-action">
+            <input [(ngModel)]="channel.channelName" type="text" class="input-label">
+            <div class="input-group-append pull-right">
+              <span class="input-group-text"><i class="fa fa-eye" (click)="getChannelMessages(channel)"></i></span>
+              <!--                            channelMessages=null;-->
+            </div>
+          </a>
+        </div>
+      </div>
+
+    </div>
+
+
+    <!---------------------   Channel Messages Column  --------------------->
+    <div class="col-sm-6">
+
+      <!--   Channel Panel  -->
+      <div class="row panel">
+        <div class="col-sm-12">
+          <div class="card">
+            <h6 class="card-header text-center">Channel Messages</h6>
+          </div>
+        </div>
+      </div>
+
+      <!--   Channels Messages  -->
+      <div class="row">
+        <div class="container col-sm-12">
+          <ul class="list-group list-group-flush channelMessages">
+            <li *ngFor="let message of channelMessages" class="list-group-item" [hidden]="currentChannelId != message.channel?.id">
+              <div class="row sender">
+                <div class="col-sm-10">
+                  <p class="username">{{message.sender?.userName}}:  <span class="stamp"> {{message?.timestamp | date:'M/d/yy-h:mm a'}}</span></p>
+
+                </div>
+                <div class="col-sm-2 editMessage">
+                  <p ><i *ngIf="message.sender.id === this.currentUser.id"  (click)="deleteMessage(message)" class="fa fa-trash-o pull-right"></i>
+                    <span><i *ngIf="message.sender.id === this.currentUser.id"
+                             (click)="selectCurrent(message);checkSender(message.sender.id, this.currentUser.id);"
+                             class="fa fa-edit pull-right"></i></span>
+                  </p>
+                </div>
+              </div>
+              <div class="row messages">
+                <div class="col-12">
+                  <p class="content">{{message?.content}}</p>
+                </div>
+              </div>
+              <label *ngIf="currentMessage?.id === message.id && validEdit" class="edit-message-container">
+                <input [(ngModel)]="currentMessage.content"
+                       placeholder="{{message.content}}"
+                       (keyup.enter)="updateMessage();validEdit=false;"
+                       type="text"
+                       class="edit-message-input"
+                >
+              </label>
+            </li>
+          </ul>
+        </div>
+      </div>
+
+      <!--    Add Message to Channel  -->
+      <div class="row" [hidden]="!currentChannelId">
+        <div  class="col-sm-12 form-group input">
+                    <textarea class="form-control"
+                              [(ngModel)]="messageModel.content"
+                              (keyup.enter)="sendMessage(messageModel);messageModel.content ='';"
+                              id="addMessage"
+                              rows="2"
+                    >
+                    </textarea>
+          <label for="addMessage" class="container">Send New Message</label>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</div>
