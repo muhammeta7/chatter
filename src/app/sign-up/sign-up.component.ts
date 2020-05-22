@@ -51,7 +51,7 @@ export class SignUpComponent implements OnInit {
 
   openModal(template: TemplateRef<any>) {
     if (this.invalidSignUp) {
-      this.createUser();
+      alert('An error has occured while creating user!');
     } else {
       this.modalRef = this.modalService.show(template, this.config);
     }
