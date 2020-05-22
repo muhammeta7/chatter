@@ -1,6 +1,6 @@
 # :speech_balloon: Chatter
 
-# :page*with* Description
+# :page_with_curl: Description
 
 This portion represents the front-end portion of the tcpZCWFinalProject. The front end was completed<br />
 using `Angular` and served on Heroku using Node and express servers. The application allows<br /> users to sign up,
@@ -19,22 +19,22 @@ using `Angular` and served on Heroku using Node and express servers. The applica
 
 ### Login Page
 
-![Login Page](/screenshots/login.PNG)
+![Login Page](/src/screenshots/login.PNG)
 
 ### Sign-Up Page
 
-![Sign-up Page](/screenshots/sign-up.PNG)
+![Sign-up Page](/src/screenshots/sign-up.PNG)
 
 ### User Dashboard
 
-![Dashboard Page](/screenshots/dashboard.PNG)
+![Dashboard Page](/src/screenshots/dashboard.PNG)
 
 ### Channel Page
 
-![Channel Page](/screenshots/channels.PNG)
+![Channel Page](/src/screenshots/channels.PNG)
 
 ### Authors
 
-**Muhammet Aydin** [Muhammet Aydin](https://github.com/muhammeta7)
-**Chris Farmer** [Chris Farmer](https://github.com/farmerc92)
-**Sandy Setiawan** [Sandy Setiawan](https://github.com/sseti)
+**Muhammet Aydin** [Muhammet Aydin](https://github.com/muhammeta7)<br />
+**Chris Farmer** [Chris Farmer](https://github.com/farmerc92)<br />
+**Sandy Setiawan** [Sandy Setiawan](https://github.com/sseti)<br />
