@@ -4,7 +4,7 @@
 
 This portion represents the front-end portion of the tcpZCWFinalProject. The front end was completed<br />
 using `Angular` and served on Heroku using Node and express servers. The application allows<br /> users to sign up,
-<br /> create channels, and directly message other users that are also in the system.
+create channels, and directly message other users that are also in the system.
 
 ## :satellite: Technologies Used
 
