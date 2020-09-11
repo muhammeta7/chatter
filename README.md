@@ -34,12 +34,13 @@ create channels, and directly message other users that are also in the system. T
 ![Channel Page](/src/screenshots/channels.PNG)
 
 ### Error Handling
-Some validation is completed using `Angular` but majority is handked on the server side of things.
+Some validation is completed using `Angular` but majority is handled on the server side of things.
 
 ### Cool Features
   * Real time update on both ends of application between both direct messages and public channel messages
   * Only user has option of editing or deleting their messages.
-  * Gives unique user who created channels has option to update the channel privacy. 
+  * Gives unique user who created channels has option to update the channel privacy.
+  * Responsive design using Bootstrap and SCSS.
 
 ### Authors
 
